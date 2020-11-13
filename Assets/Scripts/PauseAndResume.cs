@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseAndResume : MonoBehaviour
 {
+    public Text ButtonText;
     private bool isPause = false;
     private void PauseGame()
     {
@@ -19,10 +21,12 @@ public class PauseAndResume : MonoBehaviour
     {
         if (isPause)
         {
+            ButtonText.GetComponent<Text>().text = "Pause";
             ResumeGame();
         }
         else
         {
+            ButtonText.GetComponent<Text>().text = "Resume";
             PauseGame();
         }
     }

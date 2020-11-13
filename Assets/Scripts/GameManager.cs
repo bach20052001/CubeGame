@@ -12,16 +12,29 @@ public class GameManager : MonoBehaviour
     private string str;
 
     private void Start()
-    {     
+    {
         RestartPanel.SetActive(false);
     }
     private void ExportScore()
     {
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         StreamWriter writer = new StreamWriter("/RGame/Assets/Resources/Text/Score.txt", true);
         CurrentScore = score.GetComponent<Score>().GetScore();
         str = CurrentScore.ToString() + "\n";
         writer.Write(str);
         writer.Close();
+#endif
+#if UNITY_ANDROID
+        StreamWriter theWriter = new StreamWriter(Application.persistentDataPath + "/" + "Score.text");
+
+        CurrentScore = score.GetComponent<Score>().GetScore();
+        
+        str = CurrentScore.ToString() + "\n";
+
+        theWriter.Write(str);
+
+        theWriter.Close();
+#endif
     }
     public void GameOver()
     {

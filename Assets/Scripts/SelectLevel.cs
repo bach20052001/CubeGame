@@ -14,6 +14,11 @@ public class SelectLevel : MonoBehaviour
         SelectGUI.SetActive(false);
         transform.gameObject.SetActive(true);
         ROP.SetActive(true);
+
+#if UNITY_ANDROID
+        transform.gameObject.GetComponent<HorizonMove>().enabled = true;
+#endif
+
     }
 
     public void SetHard()
