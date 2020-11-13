@@ -24,7 +24,10 @@ public class AutoGenarateObstacles : AutoGenerate
             temp = 1.5f;
         }
         int n = (int)(score.GetScore()/500) + 1;
+        
+        if (n > 4) n = 4;
 
+        n = Random.Range(1, n);
         for (int i = 0; i < n; i++)
         {
             GameObject newObstacles = Instantiate(Object, new Vector3(player.transform.position.x + 350 + i*i - 1, 0, side + i*temp + 0), Quaternion.identity);

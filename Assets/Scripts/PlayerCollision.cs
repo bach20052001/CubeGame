@@ -8,7 +8,8 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.collider.CompareTag("Obstacles"))
         {
-            Player.enabled = false;
+            Player.GetComponent<PlayerMovement>().enabled = false;
+            Player.transform.gameObject.GetComponent<Brake>().enabled = false;
             FindObjectOfType<GameManager>().GameOver();
         }
         if (collision.collider.CompareTag("Ground"))

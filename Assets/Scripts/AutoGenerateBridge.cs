@@ -2,10 +2,12 @@
 
 public class AutoGenerateBridge : AutoGenerate
 {
+    public void SetTime(float Time)
+    {
+        this.Time = Time;
+    }
     public override void Start()
     {
-        Time = 10f;
-        // Update called per 'Time' second
         InvokeRepeating(nameof(UpdateAfterTimeSet), 0, Time);
     }
     public override void UpdateAfterTimeSet()

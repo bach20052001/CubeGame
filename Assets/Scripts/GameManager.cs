@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
     private void ExportScore()
     {
-        StreamWriter writer = new StreamWriter("/RGame/Assets/Text/Score.txt", true);
+        StreamWriter writer = new StreamWriter("/RGame/Assets/Resources/Text/Score.txt", true);
         CurrentScore = score.GetComponent<Score>().GetScore();
         str = CurrentScore.ToString() + "\n";
         writer.Write(str);

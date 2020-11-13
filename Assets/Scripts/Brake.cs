@@ -6,6 +6,12 @@ public class Brake : MonoBehaviour
     private readonly float grip = 2500f;
     public GameObject NotiBrake;
 
+    public void Braking()
+    {
+        NotiBrake.SetActive(true);
+        rb.AddForce(-grip * Time.deltaTime, 0, 0);
+    }
+
     private void FixedUpdate()
     {
         bool isGround = rb.gameObject.GetComponent<PlayerCollision>().isOnGround;

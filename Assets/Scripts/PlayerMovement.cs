@@ -32,11 +32,27 @@ public class PlayerMovement : MonoBehaviour
         return _speedAward;
     }
 
+    private Color32 RandomColor()
+    {
+        int r = Random.Range(0, 255);
+        int g = Random.Range(0, 255);
+        int b = Random.Range(0, 255);
+        Color32 res = new Color32((byte)r, (byte)g, (byte)b, 255);
+        return res;
+    }
+
     private void FixedUpdate()
     {
         int AddSpeed = score.GetComponent<Score>().GetScore();
-        //if (AddSpeed > 1000) rb.transform.gameObject.GetComponent<Renderer>().material.color = (Color.green);
-        rb.AddForce((_speedAward + AddSpeed) * Time.deltaTime , 0, 0);
+        
+        if (Input.GetKey(KeyCode.R))
+        {
+            Debug.Log("Change Color");
+            rb.transform.gameObject.GetComponent<Renderer>().material.color = RandomColor();
+
+        }
+
+        rb.AddForce((_speedAward + AddSpeed / 2) * Time.deltaTime , 0, 0);
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             rb.AddForce(0, 0, _speed * Time.deltaTime, ForceMode.VelocityChange);
@@ -49,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
         
         if (transform.position.y < 0)
         {
+            rb.transform.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            rb.transform.gameObject.GetComponent<Brake>().enabled = false;
             FindObjectOfType<GameManager>().GameOver();
         }
     }

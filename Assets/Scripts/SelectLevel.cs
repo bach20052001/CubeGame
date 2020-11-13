@@ -21,12 +21,14 @@ public class SelectLevel : MonoBehaviour
         InitialGame();
         rb.GetComponent<Rigidbody>().drag = 0.75f;
         transform.gameObject.GetComponent<AutoGenarateObstacles>().SetTime(0.65f);
+        transform.gameObject.GetComponent<AutoGenerateBridge>().SetTime(12f);
     }
     public void SetNormal()
     {
         InitialGame();
         rb.GetComponent<Rigidbody>().drag = 1f;
         transform.gameObject.GetComponent<AutoGenarateObstacles>().SetTime(0.75f);
+        transform.gameObject.GetComponent<AutoGenerateBridge>().SetTime(10f);
     }
 
     public void SetEasy()
@@ -34,5 +36,6 @@ public class SelectLevel : MonoBehaviour
         InitialGame();
         rb.GetComponent<Rigidbody>().drag = 1.25f;
         transform.gameObject.GetComponent<AutoGenarateObstacles>().SetTime(0.85f);
+        transform.gameObject.GetComponent<AutoGenerateBridge>().SetTime(10f);
     }
 }

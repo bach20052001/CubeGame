@@ -12,7 +12,7 @@ public class ReadScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StreamReader reader = new StreamReader("/RGame/Assets/Text/Score.txt");
+        StreamReader reader = new StreamReader("/RGame/Assets/Resources/Text/Score.txt");
         string line;
         while ((line = reader.ReadLine()) != null)
         {
