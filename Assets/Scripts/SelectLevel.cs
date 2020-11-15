@@ -27,6 +27,9 @@ public class SelectLevel : MonoBehaviour
         rb.GetComponent<Rigidbody>().drag = 0.75f;
         transform.gameObject.GetComponent<AutoGenarateObstacles>().SetTime(0.65f);
         transform.gameObject.GetComponent<AutoGenerateBridge>().SetTime(12f);
+#if UNITY_ANDROID
+        transform.gameObject.GetComponent<HorizonMove>().SetSpeedTouch(75f);
+#endif
     }
     public void SetNormal()
     {
@@ -34,6 +37,9 @@ public class SelectLevel : MonoBehaviour
         rb.GetComponent<Rigidbody>().drag = 1f;
         transform.gameObject.GetComponent<AutoGenarateObstacles>().SetTime(0.75f);
         transform.gameObject.GetComponent<AutoGenerateBridge>().SetTime(10f);
+#if UNITY_ANDROID
+        transform.gameObject.GetComponent<HorizonMove>().SetSpeedTouch(60f);
+#endif
     }
 
     public void SetEasy()
@@ -42,5 +48,8 @@ public class SelectLevel : MonoBehaviour
         rb.GetComponent<Rigidbody>().drag = 1.25f;
         transform.gameObject.GetComponent<AutoGenarateObstacles>().SetTime(0.85f);
         transform.gameObject.GetComponent<AutoGenerateBridge>().SetTime(10f);
+#if UNITY_ANDROID
+        transform.gameObject.GetComponent<HorizonMove>().SetSpeedTouch(60f);
+#endif
     }
 }

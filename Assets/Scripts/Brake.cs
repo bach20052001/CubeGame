@@ -8,8 +8,17 @@ public class Brake : MonoBehaviour
 
     public void Braking()
     {
-        NotiBrake.SetActive(true);
-        rb.AddForce(-grip * Time.deltaTime, 0, 0);
+        bool isGround = rb.gameObject.GetComponent<PlayerCollision>().isOnGround;
+
+        if (isGround)
+        {
+            NotiBrake.SetActive(true);
+            rb.AddForce(-grip * Time.deltaTime, 0, 0);
+        }
+        else
+        {
+            NotiBrake.SetActive(false);
+        }
     }
 
     private void FixedUpdate()

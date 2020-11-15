@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,8 +25,8 @@ public class GameManager : MonoBehaviour
         writer.Write(str);
         writer.Close();
 #endif
-#if UNITY_ANDROID
-        StreamWriter theWriter = new StreamWriter(Application.persistentDataPath + "/" + "Score.text");
+#if UNITY_ANDROID && !UNITY_EDITOR
+        StreamWriter theWriter = new StreamWriter(Application.persistentDataPath + "/Text" + "/Score.txt");
 
         CurrentScore = score.GetComponent<Score>().GetScore();
         

@@ -33,22 +33,22 @@ public class ReadScore : MonoBehaviour
         GetComponent<Text>().text = str;
 #endif
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
         try
         {
-            TextAsset txtAsset = (TextAsset)Resources.Load("Score.text", typeof(TextAsset));
+            TextAsset txtAsset = Resources.Load<TextAsset>("Text/Score");
             
-            string txtContent = txtAsset.text;
+            string txtContent = txtAsset.ToString() + "";
             
-            File.WriteAllText(Application.persistentDataPath + "/" + "Score.text", txtContent, Encoding.UTF8);
+            File.WriteAllText(Application.persistentDataPath + "/Text" + "/Score.txt", txtContent, Encoding.UTF8);
             
-            StreamReader theReader = new StreamReader(Application.persistentDataPath + "/" + "Score.text", Encoding.UTF8);
+            StreamReader theReader = new StreamReader(Application.persistentDataPath + "/Text" + "/Score.txt", Encoding.UTF8);
             
             string lineM;
             
             while ((lineM = theReader.ReadLine()) != null)
             {
-                ScoreList.Add(Convert.ToInt32(line));
+                ScoreList.Add(Convert.ToInt32(lineM));
             }
 
             ScoreList.Sort();
