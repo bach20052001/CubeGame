@@ -7,7 +7,7 @@ public class OptimizeObject : MonoBehaviour
     public PlayerMovement player;
     public GameObject Obstacles;
     public GameObject Bridges;
-    //public GameObject Grounds;
+    public GameObject Grounds;
     void Update()
     {
         //Obstacles
@@ -29,14 +29,14 @@ public class OptimizeObject : MonoBehaviour
             }
         }
 
-        ////Grounds
-        //for (int i = 0; i < Grounds.transform.childCount; i++)
-        //{
-        //    if (player.transform.position.x - Grounds.transform.GetChild(i).transform.position.x > 600)
-        //    {
-        //        Destroy(Grounds.transform.GetChild(i).gameObject);
-        //        break;
-        //    }
-        //}
+        //Grounds
+        for (int i = 0; i < Grounds.transform.childCount; i++)
+        {
+            if (player.transform.position.x - Grounds.transform.GetChild(i).transform.position.x > 1100)
+            {
+                Destroy(Grounds.transform.GetChild(i).gameObject);
+                break;
+            }
+        }
     }
 }

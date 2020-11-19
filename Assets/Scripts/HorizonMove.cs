@@ -8,6 +8,7 @@ public class HorizonMove : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 	//private bool isPressOne = false;
+	private float _speed = 60f;
 #endif
 
 #if (UNITY_IOS || UNITY_ANDROID)

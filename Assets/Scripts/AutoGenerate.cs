@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutoGenerate : MonoBehaviour
 {
+    public PlayerCollision playerr;
     public PlayerMovement player;
     public GameObject Object;
     public GameObject Objects;
@@ -38,9 +39,9 @@ public class AutoGenerate : MonoBehaviour
         side = RandomSize();
         switch (side)
         {
-            case Side.LEFT: { result = 3; break; }
+            case Side.LEFT: { result = 4f; break; }
             case Side.MID: { result = 0; break; }
-            case Side.RIGHT: { result = -3f; break; }
+            case Side.RIGHT: { result = -4f; break; }
         }
         return result;
     }

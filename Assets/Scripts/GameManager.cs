@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
             score.GetComponent<Score>().enabled = false;
             GetComponent<AutoGenarateObstacles>().CancelInvoke();
             GetComponent<AutoGenerateBridge>().CancelInvoke();
+            GetComponent<HorizonMove>().enabled = false;
             ExportScore();
             ROP.SetActive(false);
         }
