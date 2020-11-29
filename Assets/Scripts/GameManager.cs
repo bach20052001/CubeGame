@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         writer.Close();
 #endif
 #if UNITY_ANDROID && !UNITY_EDITOR
-        StreamWriter theWriter = new StreamWriter(Application.persistentDataPath + "/Text" + "/Score.txt");
+        StreamWriter theWriter = new StreamWriter(Application.persistentDataPath + "/Score.txt");
 
         CurrentScore = score.GetComponent<Score>().GetScore();
         

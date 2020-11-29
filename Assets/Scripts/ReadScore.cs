@@ -40,9 +40,9 @@ public class ReadScore : MonoBehaviour
             
             string txtContent = txtAsset.ToString() + "";
             
-            File.WriteAllText(Application.persistentDataPath + "/Text" + "/Score.txt", txtContent, Encoding.UTF8);
+            File.WriteAllText(Application.persistentDataPath + "/Score.txt", txtContent, Encoding.UTF8);
             
-            StreamReader theReader = new StreamReader(Application.persistentDataPath + "/Text" + "/Score.txt", Encoding.UTF8);
+            StreamReader theReader = new StreamReader(Application.persistentDataPath + "/Score.txt", Encoding.UTF8);
             
             string lineM;
             
