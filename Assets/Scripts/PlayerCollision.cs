@@ -2,18 +2,31 @@
 
 public class PlayerCollision : MonoBehaviour
 {
-    public PlayerMovement Player;
-    public bool isOnGround;
-    public Vector3 GroundPos;
+    private PlayerMovement Player;
+    private bool isOnGround;
+    public bool IsOnGround
+    {
+        get
+        {
+            return isOnGround;
+        }
+    }
 
+    private Vector3 GroundPos;
+    private GameManager manager;
+
+    private void Start()
+    {
+        Player = FindObjectOfType<PlayerMovement>();
+        manager = FindObjectOfType<GameManager>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Obstacles"))
         {
-            Player.GetComponent<PlayerMovement>().enabled = false;
-            Player.transform.gameObject.GetComponent<Brake>().enabled = false;
-            FindObjectOfType<GameManager>().GameOver();
+            Player.enabled = false;
+            manager.GameOver();
         }
         if (collision.collider.CompareTag("Ground"))
         {
@@ -27,6 +40,14 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.name == "Ground")
         {
             GroundPos = collision.gameObject.transform.position;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isOnGround = false;
         }
     }
     public Vector3 GetGroundPos()

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PauseAndResume : MonoBehaviour
 {
-    public Text ButtonText;
+    [SerializeField] private Text ButtonText;
     private bool isPause = false;
     private void PauseGame()
     {

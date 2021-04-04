@@ -1,26 +1,60 @@
 ﻿using System.IO;
-using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
+
     private bool isOver = false;
-    public GameObject RestartPanel;
-    public GameObject ROP;
-    public Score score;
+    
+    public bool IsOver
+    {
+        get
+        {
+            return isOver;
+        }
+    }
+
+    [SerializeField] private GameObject RestartPanel;
+    [SerializeField] private GameObject pauseOrResume;
+    [SerializeField] private Score score;
     private int CurrentScore;
     private string str;
-
+    [SerializeField] private Text ButtonText;
+    private bool isPause = false;
+    [SerializeField] private PoolingManager poolingManager;
     private void Start()
     {
+        if (instance == null)
+        {
+            instance = FindObjectOfType<GameManager>();
+        }
+        if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        
         RestartPanel.SetActive(false);
     }
     private void ExportScore()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-        StreamWriter writer = new StreamWriter("/RGame/Assets/Resources/Text/Score.txt", true);
-        CurrentScore = score.GetComponent<Score>().GetScore();
+        StreamWriter writer = new StreamWriter("Assets/Resources/Text/Score.txt", true);
+        CurrentScore = score.GetScore();
         str = CurrentScore.ToString() + "\n";
         writer.Write(str);
         writer.Close();
@@ -43,12 +77,10 @@ public class GameManager : MonoBehaviour
         {
             isOver = true;
             RestartPanel.SetActive(true);
-            score.GetComponent<Score>().enabled = false;
-            GetComponent<AutoGenarateObstacles>().CancelInvoke();
-            GetComponent<AutoGenerateBridge>().CancelInvoke();
-            GetComponent<HorizonMove>().enabled = false;
             ExportScore();
-            ROP.SetActive(false);
+            score.enabled = false;
+            pauseOrResume.SetActive(false);
+            poolingManager.StopAllCoroutines();
         }
     }    
     public void Restart()
@@ -59,5 +91,30 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    private void PauseGame()
+    {
+        isPause = true;
+        Time.timeScale = 0;
+    }
+
+    private void ResumeGame()
+    {
+        isPause = false;
+        Time.timeScale = 1;
+    }
+
+    public void Active()
+    {
+        if (isPause)
+        {
+            ButtonText.GetComponent<Text>().text = "Pause";
+            ResumeGame();
+        }
+        else
+        {
+            ButtonText.GetComponent<Text>().text = "Resume";
+            PauseGame();
+        }
     }
 }

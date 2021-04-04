@@ -3,7 +3,12 @@ using UnityEngine.UI;
 
 public class ShowSpeed : MonoBehaviour
 {
-    public PlayerMovement player;
+    private PlayerMovement player;
+
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+    }
 
     // Update is called once per frame
     void Update()

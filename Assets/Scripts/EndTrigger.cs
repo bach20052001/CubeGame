@@ -2,7 +2,7 @@
 
 public class EndTrigger : MonoBehaviour
 {
-    public GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
     private void OnTriggerEnter(Collider other)
     {
         gameManager.GameOver();

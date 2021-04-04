@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenHighscore : MonoBehaviour
 {
-    public GameObject HighScore;
+    [SerializeField] private GameObject HighScore;
     // Start is called before the first frame update
     public void Toggle()
     {
