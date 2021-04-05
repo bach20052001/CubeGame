@@ -45,7 +45,7 @@ public class SelectLevel : MonoBehaviour
     public List<LevelScriptable> levels = new List<LevelScriptable>();
     public List<Button> levelButton = new List<Button>();
 
-    public LevelScriptable levelSelected;
+    [HideInInspector] public LevelScriptable levelSelected;
 
     private void Start()
     {
