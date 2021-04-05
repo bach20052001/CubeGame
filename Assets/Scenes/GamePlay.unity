@@ -738,7 +738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &413620245
 Transform:
   m_ObjectHideFlags: 0
@@ -904,7 +904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &519251351
 Transform:
   m_ObjectHideFlags: 0
@@ -990,6 +990,7 @@ MonoBehaviour:
   - {fileID: 2000563871}
   - {fileID: 432091482}
   - {fileID: 367870188}
+  levelSelected: {fileID: 0}
 --- !u!1 &555775920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.009521484, y: -30.999996}
+  m_AnchoredPosition: {x: 0.009521484, y: -30.999939}
   m_SizeDelta: {x: -759.3, y: -306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912208660
@@ -3703,7 +3704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2039640785
 Transform:
   m_ObjectHideFlags: 0
@@ -3735,7 +3736,7 @@ PrefabInstance:
     - target: {fileID: 1998714690203937728, guid: 663d621e827211546a01f279183bb156,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1998714690203937728, guid: 663d621e827211546a01f279183bb156,
         type: 3}
