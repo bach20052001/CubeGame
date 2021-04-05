@@ -16,3 +16,4 @@ MonoBehaviour:
   speedSide: 50
   speed: 50
   grip: 2500
+  flyS: 30

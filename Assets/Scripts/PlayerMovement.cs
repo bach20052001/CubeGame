@@ -49,7 +49,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-#region MOBILE ENVIRONMENT
+        rb.AddForce(_speedAward, 0, 0, ForceMode.Acceleration);
+
+        #region MOBILE ENVIRONMENT
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         if (Input.touchCount == 1)
         {
@@ -76,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
 
 #region PC ENVIRONMENT     
 #if UNITY_WEBGL || UNITY_STANDALONE
-        rb.AddForce(_speedAward, 0, 0, ForceMode.Acceleration);
 
         if (Input.GetKey(KeyCode.Space))
         {

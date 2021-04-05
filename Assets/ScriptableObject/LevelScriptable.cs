@@ -7,4 +7,5 @@ public class LevelScriptable : ScriptableObject
     public float speedSide;
     public float speed;
     public float grip;
+    public float flyS;
 }
